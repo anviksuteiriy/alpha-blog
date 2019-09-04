@@ -13,10 +13,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def user_params
-    params.require(:user).permit(:username, :email, :password)
-  end
-
   def edit
     @user = User.find(params[:id])
   end
@@ -29,5 +25,15 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def show 
+    @user = User.find(params[:id])
+  end
+
+  private 
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
   end
 end
